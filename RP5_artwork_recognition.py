@@ -5,8 +5,8 @@ from ultralytics import YOLO
 
 # Load the YOLO model
 model = YOLO("/home/ytyuenab/RP5/models/best_studio_v2.onnx", task = "segment")
-# /home/ytyuenab/RP5/models/best_studio_detect.onnx
-# /home/ytyuenab/RP5/models/best_studio_v2.onnx, task = "segment"
+# "/home/ytyuenab/RP5/models/best_studio_detect.onnx"
+# "/home/ytyuenab/RP5/models/best_studio_v2.onnx", task = "segment"
 
 # Initialize the camera
 picam2 = Picamera2()
