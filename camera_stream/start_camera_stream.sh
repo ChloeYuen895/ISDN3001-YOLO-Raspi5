@@ -9,7 +9,7 @@ echo "Stream is active - check your laptop at http://localhost:5000/"
 # Clean version with suppressed warnings
 ffmpeg -f v4l2 \
        -input_format mjpeg \
-       -video_size 1280x720 \
+       -video_size 640x480 \
        -framerate 30 \
        -i /dev/video0 \
        -c:v libx264 \
