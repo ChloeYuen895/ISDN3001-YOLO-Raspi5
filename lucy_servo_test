@@ -1,0 +1,44 @@
+import gpiod
+import time
+import RPi.GPIO as GPIO
+
+
+
+# GPIO pin numbers
+head_servo_pin = 18  # Adjust as needed
+nodding_servo_pin = 23  # Adjust as needed
+
+# Initialize gpiod
+chip = gpiod.Chip('gpiochip0')
+head_line = chip.get_line(head_servo_pin)
+nodding_line = chip.get_line(nodding_servo_pin)
+
+# Request lines for output
+head_line.request(consumer='servo_control', type=gpiod.LINE_REQUEST.Output)
+nodding_line.request(consumer='servo_control', type=gpiod.LINE_REQUEST.Output)
+
+# Set up RPi.GPIO for PWM
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(head_servo_pin, GPIO.OUT)
+head_pwm = GPIO.PWM(head_servo_pin, 50)  # 50 Hz
+head_pwm.start(0)
+
+def rotate_head(angle):
+    duty_cycle = angle / 18 + 2  # Convert angle to duty cycle
+    head_pwm.ChangeDutyCycle(duty_cycle)
+    time.sleep(0.5)  # Adjust this to control rotation speed
+    head_pwm.ChangeDutyCycle(0)  # Stop the servo
+
+try:
+    while True:
+        rotate_head(90)  # Rotate to 90 degrees
+        time.sleep(1)    # Wait before rotating back
+        rotate_head(0)   # Rotate back to 0 degrees
+        time.sleep(1)    # Wait before next rotation
+
+except KeyboardInterrupt:
+    pass
+
+# Cleanup
+head_pwm.stop()
+GPIO.cleanup()
