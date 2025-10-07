@@ -6,7 +6,7 @@ import threading
 
 def get_laptop_ip():
     """Replace with your laptop's IP address"""
-    return "192.168.1.100"  # CHANGE THIS to your laptop's actual IP
+    return "100.80.197.71"  # CHANGE THIS to your laptop's actual IP
 
 def start_optimized_usb_stream():
     laptop_ip = get_laptop_ip()
