@@ -16,7 +16,7 @@ import argparse
 
 # Default configuration - modify these values as needed
 DEFAULT_FPS = 10                                    # Frames per second to send to API
-DEFAULT_ENDPOINT = "http://100.80.197.71:8080"      # Model API endpoint
+DEFAULT_ENDPOINT = "http://100.88.240.42:5000"      # Model API endpoint
 DEFAULT_INPUT_SOURCE = 2                            # Webcam index (0 = USB camera, 2 = glasses camera)
 
 # Network configuration
